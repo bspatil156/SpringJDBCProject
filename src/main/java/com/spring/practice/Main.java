@@ -5,6 +5,7 @@ import com.spring.Interface.StudentInterfaceImpl;
 import com.spring.entities.Student;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
+import org.springframework.core.env.SystemEnvironmentPropertySource;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 public class Main {
@@ -45,9 +46,13 @@ public class Main {
 //        System.out.println(result+" rows updated!!!");
 
 //        Delete operation
-        Student std = new Student();
-        std.setId(122222);
-        int result = stif.delete(std);
-        System.out.println(result+" rows deleted!!!");
+//        Student std = new Student();
+//        std.setId(122222);
+//        int result = stif.delete(std);
+//        System.out.println(result+" rows deleted!!!");
+
+//        Single Student Select Operation
+        Student std = stif.getStudent(122);
+        System.out.println(std);
     }
 }

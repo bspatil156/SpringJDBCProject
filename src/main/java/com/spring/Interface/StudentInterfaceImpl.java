@@ -2,6 +2,7 @@ package com.spring.Interface;
 
 import com.spring.entities.Student;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 
 public class StudentInterfaceImpl implements StudentInterface {
 
@@ -25,6 +26,14 @@ public class StudentInterfaceImpl implements StudentInterface {
         String query = "delete from student where Id=?";
         int result = jdbcTemplate.update(query,student.getId());
         return result;
+    }
+
+    @Override
+    public Student getStudent(int student_ID) {
+        RowMapper<Student> rmi = new RowMapperImpl();
+        String query = "select * from student where Id=?";
+        Student student = jdbcTemplate.queryForObject(query,rmi,student_ID);
+        return student;
     }
 
     public JdbcTemplate getJdbcTemplate() {
