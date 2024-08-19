@@ -8,14 +8,18 @@ import org.springframework.context.support.FileSystemXmlApplicationContext;
 import org.springframework.core.env.SystemEnvironmentPropertySource;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
         System.out.println( "This is the Beginning of my project" );
         ApplicationContext ac = new FileSystemXmlApplicationContext("src/main/java/com/spring/practice/config.xml");
 
 //        StudentInterfaceImpl stifobj = ac.getBean("stifi", StudentInterfaceImpl.class);
-//                                        ||  OR   ||
+//                                        ||  OR  ||
         StudentInterface stif = ac.getBean("stifi", StudentInterface.class);
+//                                        ||  OR  ||
+//        StudentInterface stif = (StudentInterface) ac.getBean("stifi");
 
 //        Without using interface :
 //        Not an industry standard
@@ -29,10 +33,10 @@ public class Main {
 
 //        Student std = new Student();
 //        Insert Operation
-//        std.setId(12);
-//        std.setName("Bhavesh Patil");
+//        std.setId(21);
+//        std.setName("Sahil Nikam");
 //        std.setCity("Pune");
-//        std.setHobby("Reading");
+//        std.setHobby("Refurbmishing");
 //        int result = stif.insert(std);
 //        System.out.println(result+" rows inserted!!!");
 
@@ -52,7 +56,13 @@ public class Main {
 //        System.out.println(result+" rows deleted!!!");
 
 //        Single Student Select Operation
-        Student std = stif.getStudent(122);
-        System.out.println(std);
+//        Student std = stif.getStudent(12);
+//        System.out.println(std);
+
+//        Multiple Student selection :
+        List<Student> mystdlist = stif.getAllStudents();
+        for(Student s : mystdlist){
+            System.out.println(s);
+        }
     }
 }
