@@ -13,7 +13,7 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         System.out.println( "This is the Beginning of my project" );
-        ApplicationContext ac = new FileSystemXmlApplicationContext("src/main/java/com/spring/practice/config.xml");
+        ApplicationContext ac = new FileSystemXmlApplicationContext("src/main/resources/config.xml");
 
 //        StudentInterfaceImpl stifobj = ac.getBean("stifi", StudentInterfaceImpl.class);
 //                                        ||  OR  ||
